@@ -97,7 +97,7 @@ def generate_real_terminal_data():
 
     # Utilizando o modelo atual correto para o SDK do Google GenAI
     response = client.models.generate_content(
-    model='gemini-1.5-flash',
+    model='gemini-1.5-flash-latest',
         contents="Gere a análise preditiva atualizada para o terminal do leite de hoje.",
         config=types.GenerateContentConfig(
             system_instruction=system_instruction,
