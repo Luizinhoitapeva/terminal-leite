@@ -1,15 +1,15 @@
 import os
 import json
 from datetime import datetime
-from google import genai
-from google.genai import types
+import google.generativeai as genai
 
 def generate_real_terminal_data():
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
         raise ValueError("GEMINI_API_KEY não encontrada nas variáveis de ambiente do GitHub.")
 
-    client = genai.Client(api_key=api_key)
+    # Configuração oficial clássica
+    genai.configure(api_key=api_key)
 
     system_instruction = """
     Você é um analista sênior do Bloomberg Terminal especializado no mercado físico de comercialização de leite cru no Brasil para laticínios industriais (com destaque máximo para a ITALAC). 
@@ -95,16 +95,16 @@ def generate_real_terminal_data():
     Retorne estritamente APENAS o JSON válido.
     """
 
-    # Utilizando o modelo atual correto para o SDK do Google GenAI
-    response = client.models.generate_content(
-    model='gemini-1.5-flash-latest',
-        contents="Gere a análise preditiva atualizada para o terminal do leite de hoje.",
-        config=types.GenerateContentConfig(
-            system_instruction=system_instruction,
-            response_mime_type="application/json",
-            temperature=0.2
-        )
+    model = genai.GenerativeModel(
+        model_name='gemini-1.5-flash',
+        generation_config={
+            "response_mime_type": "application/json",
+            "temperature": 0.2
+        },
+        system_instruction=system_instruction
     )
+
+    response = model.generate_content("Gere a análise preditiva atualizada para o terminal do leite de hoje.")
 
     data = json.loads(response.text)
     
