@@ -84,15 +84,23 @@ export default function App() {
       </main>
       <ScenarioModal isOpen={isScenarioModalOpen} onClose={() => setIsScenarioModalOpen(false)} presets={SAMPLE_PRESETS} activePresetId={activePresetId} onSelectPreset={handleSelectPreset} />
       <CustomAnalysisModal isOpen={isCustomModalOpen} onClose={() => setIsCustomModalOpen(false)} onRunAnalysis={runAnalysis} isAnalyzing={isAnalyzing} />
+      
+      {/* RODAPÉ ATUALIZADO COM ASSINATURA E IDENTIDADE */}
       <footer className="bg-slate-950 border-t border-slate-900 py-6 text-xs text-slate-500 font-mono">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-cyan-400"></div>
-            <span className="font-bold text-slate-200">Terminal Bloomberg – Inteligência do Leite Cru</span>
+          <div className="flex flex-col sm:flex-row items-center gap-2">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-cyan-400"></div>
+              <span className="font-bold text-slate-200">Criado por LD • Terminal de Inteligência do Leite Cru</span>
+            </div>
+            <span className="hidden sm:inline text-slate-700">•</span>
+            <span className="text-[11px] text-slate-400">Atualização automática diária</span>
           </div>
-          <div className="flex items-center gap-4 text-[11px] text-slate-500">
+          <div className="flex flex-wrap items-center justify-center gap-4 text-[11px] text-slate-500">
             <span>Fontes: CEPEA / Scot / B3 / MilkPoint</span>
-            <span className="text-cyan-400 font-bold">Acurácia Preditiva IPML: 94.2%</span>
+            <span className="text-cyan-400 font-bold">
+              {terminalData.timestamp ? `Última atualização: ${terminalData.timestamp}` : 'Sinais em validação'}
+            </span>
           </div>
         </div>
       </footer>
