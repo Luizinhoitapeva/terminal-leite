@@ -23,7 +23,7 @@
         "label": "Repasse no Atacado",
         "score": 79,
         "weight": "15%",
-        "points": "+11.9 pts",
+        "points": "+11.8 pts",
         "type": "positive",
         "explanation": "Movimento de preços em UHT e derivados."
       },
@@ -233,7 +233,7 @@
   },
   "todayDateFormatted": "Sexta-feira, 07 de agosto de 2026",
   "createdBy": "Criado por LD",
-  "timestamp": "Atualizado 19:32",
+  "timestamp": "Atualizado 20:32",
   "compass": {
     "marketDirection": "comprador",
     "directionBadge": "COMPRADOR (ALTA DOS PREÇOS)",
