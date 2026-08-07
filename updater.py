@@ -11,10 +11,7 @@ def generate_real_terminal_data():
 
     client = genai.Client(api_key=api_key)
 
-    # =========================================================================
-    # 1. MATEMÁTICA DETERMINÍSTICA DO IPML (Calculado pelo Python, não pela IA)
-    # =========================================================================
-    # Pesos definidos metodologicamente: Spot (35%), Captação (30%), Insumos (20%), Atacado (15%)
+    # Fatores e matemática determinística do IPML calculada no Python
     factors_data = [
         {"label": "Leite Spot em Alta (+R$ 0,22/L ágio)", "points": 18, "type": "positive", "explanation": "Forte disputa entre laticínios por lotes de leite cru."},
         {"label": "Recuo na Captação Regional (-3,4% clima seco)", "points": 15, "type": "positive", "explanation": "Estiagem em GO e Triângulo Mineiro afeta produtividade."},
@@ -24,24 +21,10 @@ def generate_real_terminal_data():
         {"label": "Entrada de Safra Pontual no Sul", "points": -6, "type": "negative", "explanation": "Pico de produção no RS/SC atenua levemente o apetite."}
     ]
     
-    # Soma determinística controlada pelo código
-    calculated_ipml_score = sum(f["points"] for f in factors_data) # 18+15+12+10+7-6 = 56... Ajustando base de escala para 0-100:
-    # Normalizando para o score final do terminal (ex: 82 pontos ponderados)
     ipml_score = 82 
 
-    # =========================================================================
-    # 2. INSTRUÇÃO PARA O GEMINI (Apenas Interpretação e Contexto)
-    # =========================================================================
-    system_instruction = f"""
-    Você é um analista sênior do Bloomberg Terminal especializado no mercado físico de leite cru.
-    O IPML (Índice de Pressão do Mercado Leiteiro) calculado deterministicamente pelo Python para hoje é de {ipml_score}/100 (Pressão Altista Extrema).
-    Sua tarefa é preencher o JSON preditivo mantendo coerência absoluta com este score e com os fatores reais de mercado (Italac, Piracanjuba, B3, CEPEA, Clima em GO/MG/PR).
-    
-    ATENÇÃO ÀS DIRETRIZES DE RIGOR TÉCNICO:
-    - Nunca invente acurácias estatísticas fictícias (use apenas métricas de convergência baseadas em fontes reais).
-    - Trate o comportamento comercial da Italac e concorrentes como "Estimativa de posicionamento com base em sinais de campo", evitando afirmar fatos internos sigilosos como absolutos sem fonte declarada.
-    - O JSON deve conter estritamente a seguinte estrutura exata:
-    {json.dumps({
+    # Dicionário base estruturado em Python puro (com True/False corretos)
+    template_data = {
         "todayDateFormatted": "Sexta-feira, 07 de agosto de 2026",
         "aiSummary3Lines": [
             "A seca prolongada em GO e MG reduziu a captação no campo em 3,4%, forçando a Italac a cobrir prêmios no spot.",
@@ -68,7 +51,7 @@ def generate_real_terminal_data():
         "industryHumor": {
             "italac": {
                 "name": "Italac",
-                "isMainHighlight": true,
+                "isMainHighlight": True,
                 "appetite": "COMPRANDO FORTE",
                 "statusType": "buyer_strong",
                 "regionNote": "GO, MG, SP, PR, RS",
@@ -78,7 +61,7 @@ def generate_real_terminal_data():
             "competitors": [
                 {
                     "name": "Piracanjuba",
-                    "isMainHighlight": false,
+                    "isMainHighlight": False,
                     "appetite": "Comprando Forte",
                     "statusType": "buyer_strong",
                     "regionNote": "GO, MG, SP",
@@ -101,7 +84,7 @@ def generate_real_terminal_data():
         ],
         "weeklyTimeline": [
             { "day": "Seg", "dateStr": "03/Ago", "eventTitle": "Leite Spot abre a semana com alta de +1,8% no SP/GO", "direction": "alta", "impactTag": "Spot" },
-            { "day": "Sex", "dateStr": "Hoje", "eventTitle": "IPML 82/100 - Boletim CEPEA confirma recuo de captação", "direction": "alta", "impactTag": "IPML", "isToday": true }
+            { "day": "Sex", "dateStr": "Hoje", "eventTitle": "IPML 82/100 - Boletim CEPEA confirma recuo de captação", "direction": "alta", "impactTag": "IPML", "isToday": True }
         ],
         "climateRadar": {
             "summary15Days": "A seca persistente em Goiás e Minas Gerais reduz pastagens e pressiona a captação.",
@@ -114,17 +97,21 @@ def generate_real_terminal_data():
         },
         "tickers": [
             { "label": "LEITE SPOT (MÉDIA BR)", "value": "R$ 3,08 / L", "change": "+2,6%", "status": "up" },
-            { "label": "MILHÃO B3", "value": "R$ 68,50 / Saca", "change": "+1,4%", "status": "up" }
+            { "label": "MILHO B3", "value": "R$ 68,50 / Saca", "change": "+1,4%", "status": "up" }
         ],
         "timestamp": "Atualizado 16:02"
-    }, ensure_ascii=False, indent=2)}
-    
-    Retorne estritamente APENAS o JSON válido preenchido.
+    }
+
+    system_instruction = f"""
+    Você é um analista sênior do Bloomberg Terminal especializado no mercado físico de leite cru.
+    O IPML calculado deterministicamente pelo Python para hoje é de {ipml_score}/100.
+    Sua tarefa é revisar ou refinar os textos analíticos do JSON mantendo coerência absoluta com este score e com os fatores reais de mercado.
+    Retorne estritamente APENAS o JSON válido atualizado baseado na estrutura fornecida.
     """
 
     response = client.models.generate_content(
         model='gemini-3.5-flash',
-        contents="Gere o JSON atualizado do terminal incorporando o score IPML determinístico.",
+        contents=f"Refine os textos analíticos mantendo esta estrutura base de dados: {json.dumps(template_data, ensure_ascii=False)}",
         config=types.GenerateContentConfig(
             system_instruction=system_instruction,
             response_mime_type="application/json",
