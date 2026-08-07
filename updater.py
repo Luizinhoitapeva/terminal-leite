@@ -10,7 +10,7 @@ from google.genai import types
 # CONFIGURAÇÃO
 # ============================================================================
 
-OUTPUT_PATH = os.path.join("src", "data", "liveData.json")
+OUTPUT_PATH = os.path.join("public", "data", "liveData.json")
 
 MODEL_NAME = "gemini-3.5-flash"
 
