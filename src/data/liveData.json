@@ -1,0 +1,230 @@
+{
+  "todayDateFormatted": "Sexta-feira, 25 de Outubro de 2024",
+  "aiSummary3Lines": [
+    "O mercado de leite cru no campo e spot enfrenta forte pressão de alta devido à entressafra prolongada e pastagens degradadas nas principais bacias do Sudeste e Centro-Oeste brasileiro.",
+    "A Italac lidera a corrida por captação mantendo postura agressiva de compras com ágios expressivos no spot para garantir o abastecimento de suas linhas industriais em Goiás e Minas Gerais.",
+    "A alta do milho na B3 e o dólar valorizado encarecem a ração, enquanto a forte demanda por muçarela e UHT sustenta o repasse de preços ao longo da cadeia."
+  ],
+  "ipml": {
+    "score": 84,
+    "statusLabel": "PRESSÃO ALTISTA EXTREMA (84/100)",
+    "factors": [
+      {
+        "label": "Leite Spot em Alta (+R$ 0,25/L ágio)",
+        "points": 20,
+        "type": "positive",
+        "explanation": "Escassez de oferta no spot eleva competição entre laticínios."
+      },
+      {
+        "label": "Custos de Alimentação (B3)",
+        "points": 15,
+        "type": "positive",
+        "explanation": "Milho e farelo de soja em alta pressionam margens do produtor."
+      },
+      {
+        "label": "Captação CEPEA em Queda",
+        "points": 18,
+        "type": "positive",
+        "explanation": "Índice de captação recua pelo terceiro mês consecutivo nas bacias do Sul e Sudeste."
+      }
+    ]
+  },
+  "compass": {
+    "marketDirection": "comprador",
+    "directionBadge": "COMPRADOR (ALTA DOS PREÇOS)",
+    "periods": {
+      "d7": {
+        "label": "7 Dias",
+        "probabilityText": "Alta Forte (88%)",
+        "direction": "alta"
+      },
+      "d15": {
+        "label": "15 Dias",
+        "probabilityText": "Alta Moderada (79%)",
+        "direction": "alta"
+      },
+      "d30": {
+        "label": "30 Dias",
+        "probabilityText": "Estável (55%)",
+        "direction": "estabilidade"
+      }
+    }
+  },
+  "drivers": [
+    {
+      "id": "drv-1",
+      "text": "Redução na captação média diária devido ao clima seco nas bacias de MG e GO.",
+      "direction": "up",
+      "impactTag": "Oferta Restrita"
+    },
+    {
+      "id": "drv-2",
+      "text": "Aumento na demanda de queijos e UHT no varejo pressiona indústrias por matéria-prima.",
+      "direction": "up",
+      "impactTag": "Demanda Forte"
+    },
+    {
+      "id": "drv-3",
+      "text": "Valorização do dólar encarece fertilizantes e suplementos importados.",
+      "direction": "up",
+      "impactTag": "Custos"
+    }
+  ],
+  "industryHumor": {
+    "italac": {
+      "name": "Italac",
+      "isMainHighlight": true,
+      "appetite": "COMPRANDO FORTE",
+      "statusType": "buyer_strong",
+      "regionNote": "GO, MG, SP, PR, RS, RO",
+      "spotPremium": "Ágio Agressivo (+R$ 0,28/L)",
+      "strategyText": "A Italac adota postura altamente agressiva no mercado spot para assegurar volume e evitar ociosidade em suas plantas de pó e UHT, oferecendo bônus de fidelidade aos produtores parceiros."
+    },
+    "competitors": [
+      {
+        "name": "Piracanjuba",
+        "isMainHighlight": false,
+        "appetite": "Comprando Forte",
+        "statusType": "buyer_strong",
+        "regionNote": "GO, MG, SP, Sul",
+        "spotPremium": "Ágio de +R$ 0,22 / Litro",
+        "strategyText": "Foco em manter bacia de captação ativa no Centro-Oeste com contratos de fidelidade."
+      },
+      {
+        "name": "Nestlé",
+        "isMainHighlight": false,
+        "appetite": "Moderado",
+        "statusType": "buyer_moderate",
+        "regionNote": "SP, MG, Sul",
+        "spotPremium": "Ágio Seletivo",
+        "strategyText": "Foco em contratos de longo prazo e qualidade (sólidos), evitando disputas extremas no spot."
+      }
+    ]
+  },
+  "impactRadar": [
+    {
+      "id": "rad-1",
+      "title": "Leite Spot atinge R$ 3,15 em Minas Gerais",
+      "summary": "Escassez de oferta no campo força indústrias a buscarem leite spot com ágio recorde para o período.",
+      "direction": "alta",
+      "impactScore": 9.4,
+      "category": "Mercado Spot",
+      "source": "MilkPoint",
+      "publishedTime": "Hoje"
+    },
+    {
+      "id": "rad-2",
+      "title": "Importações do Mercosul perdem força com câmbio",
+      "summary": "Dólar acima de R$ 5,60 reduz a atratividade do leite em pó importado da Argentina e Uruguai.",
+      "direction": "alta",
+      "impactScore": 8.1,
+      "category": "Importação",
+      "source": "CEPEA",
+      "publishedTime": "Ontem"
+    }
+  ],
+  "weeklyTimeline": [
+    {
+      "day": "Seg",
+      "dateStr": "21/Out",
+      "eventTitle": "Divulgação do índice de captação CEPEA com queda de 2.4%",
+      "direction": "alta",
+      "impactTag": "Oferta"
+    },
+    {
+      "day": "Ter",
+      "dateStr": "22/Out",
+      "eventTitle": "Leilão GlobalDairyTrade (GDT) apresenta estabilidade nos preços internacionais",
+      "direction": "neutro",
+      "impactTag": "Global"
+    },
+    {
+      "day": "Qua",
+      "dateStr": "23/Out",
+      "eventTitle": "Preço do leite spot sobe R$ 0,12 nas bacias de GO e MG",
+      "direction": "alta",
+      "impactTag": "Spot"
+    },
+    {
+      "day": "Qui",
+      "dateStr": "24/Out",
+      "eventTitle": "Milho B3 fecha em alta acumulada de 3.5% na semana",
+      "direction": "alta",
+      "impactTag": "Custos"
+    },
+    {
+      "day": "Sex",
+      "dateStr": "Hoje",
+      "eventTitle": "Boletim de mercado aponta Italac liderando compras no spot",
+      "direction": "alta",
+      "impactTag": "IPML",
+      "isToday": true
+    }
+  ],
+  "climateRadar": {
+    "summary15Days": "Previsão de chuvas irregulares e abaixo da média histórica nas bacias de MG e GO mantém pastagens secas, enquanto o Sul apresenta excesso de umidade pontual.",
+    "nationalRegions": [
+      {
+        "region": "Goiás (GO)",
+        "condition": "Seca Severa",
+        "weatherType": "drought",
+        "impactDirection": "alta",
+        "impactLabel": "Altista",
+        "details": "Temperaturas elevadas e falta de umidade reduzem a qualidade do pasto."
+      },
+      {
+        "region": "Minas Gerais (MG)",
+        "condition": "Estiagem Prolongada",
+        "weatherType": "drought",
+        "impactDirection": "alta",
+        "impactLabel": "Altista",
+        "details": "Bacia do Triângulo e Noroeste com atraso na recuperação das pastagens."
+      },
+      {
+        "region": "Paraná (PR)",
+        "condition": "Chuvas Excessivas",
+        "weatherType": "rain",
+        "impactDirection": "neutro",
+        "impactLabel": "Neutro",
+        "details": "Excesso de umidade dificulta o manejo, mas garante boa oferta de forragem."
+      }
+    ],
+    "globalRegions": [
+      {
+        "region": "Nova Zelândia",
+        "condition": "Clima Favorável",
+        "weatherType": "sun",
+        "impactDirection": "neutro",
+        "impactLabel": "Neutro",
+        "details": "Início de temporada com boa produção de sólidos, limitando altas globais extremas."
+      }
+    ]
+  },
+  "tickers": [
+    {
+      "label": "LEITE SPOT (MG/GO)",
+      "value": "R$ 3,15 / L",
+      "change": "+3,2%",
+      "status": "up"
+    },
+    {
+      "label": "CEPEA MÉDIO",
+      "value": "R$ 2,78 / L",
+      "change": "+1,8%",
+      "status": "up"
+    },
+    {
+      "label": "MILHO B3 (CCM1)",
+      "value": "R$ 64,50 / Sc",
+      "change": "+1,2%",
+      "status": "up"
+    },
+    {
+      "label": "DÓLAR (USDBRL)",
+      "value": "R$ 5,62",
+      "change": "+0,4%",
+      "status": "up"
+    }
+  ],
+  "timestamp": "Atualizado às 10:45 BRT"
+}
