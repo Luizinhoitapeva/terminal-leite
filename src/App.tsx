@@ -20,7 +20,7 @@ export default function App() {
 
   // Carrega o liveData.json gerado pelo robô assim que a página abre
   useEffect(() => {
-    fetch('/src/data/liveData.json')
+    fetch('/data/liveData.json') // <-- Caminho correto para arquivos públicos no Vite/Cloudflare
       .then((res) => {
         if (res.ok) return res.json();
         throw new Error('Live data not found');
