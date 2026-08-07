@@ -18,7 +18,7 @@ jobs:
           python-version: '3.10'
 
       - name: Instalar Dependências
-        run: pip install google-genai
+        run: pip install google-generativeai
 
       - name: Executar Script de Atualização
         env:
