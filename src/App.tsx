@@ -20,13 +20,28 @@ export default function App() {
 
   // Carrega o liveData.json gerado pelo robô assim que a página abre
   useEffect(() => {
-    fetch('/data/liveData.json') // <-- Caminho correto para arquivos públicos no Vite/Cloudflare
+    fetch('/data/liveData.json')
       .then((res) => {
         if (res.ok) return res.json();
         throw new Error('Live data not found');
       })
       .then((data) => {
-        if (data) setTerminalData(data);
+        if (data && typeof data === 'object') {
+          // Garante mesclagem com dados padrão para evitar crash caso alguma chave venha vazia
+          setTerminalData((prevData) => ({
+            ...prevData,
+            ...data,
+            aiSummary3Lines: data.aiSummary3Lines || prevData.aiSummary3Lines || [],
+            tickers: data.tickers || prevData.tickers || [],
+            drivers: data.drivers || prevData.drivers || [],
+            impactRadar: data.impactRadar || prevData.impactRadar || [],
+            weeklyTimeline: data.weeklyTimeline || prevData.weeklyTimeline || [],
+            ipml: data.ipml ? {
+              ...data.ipml,
+              factors: data.ipml.factors || []
+            } : prevData.ipml
+          }));
+        }
       })
       .catch((err) => {
         console.log('Usando dados padrão/fallback locais:', err);
@@ -65,27 +80,27 @@ export default function App() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans antialiased flex flex-col selection:bg-cyan-500 selection:text-slate-950">
       <TerminalHeader
-        dateStr={terminalData.todayDateFormatted}
-        tickers={terminalData.tickers}
-        timestamp={terminalData.timestamp}
+        dateStr={terminalData?.todayDateFormatted || ''}
+        tickers={terminalData?.tickers || []}
+        timestamp={terminalData?.timestamp || ''}
         isAnalyzing={isAnalyzing}
-        isFallback={terminalData.isFallback}
+        isFallback={terminalData?.isFallback}
         onOpenPresets={() => setIsScenarioModalOpen(true)}
         onOpenCustomInput={() => setIsCustomModalOpen(true)}
         onRefresh={handleRefresh}
       />
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <FastDecisionHeader summary3Lines={terminalData.aiSummary3Lines} dateStr={terminalData.todayDateFormatted} />
-        <IpmlGauge ipml={terminalData.ipml} />
-        <CompassAndMovers compass={terminalData.compass} drivers={terminalData.drivers} />
-        <IndustryHumor humor={terminalData.industryHumor} />
-        <ImpactRadarAndTimeline radarCards={terminalData.impactRadar} timeline={terminalData.weeklyTimeline} />
-        {terminalData.climateRadar && <ClimateRadar climate={terminalData.climateRadar} />}
+        <FastDecisionHeader summary3Lines={terminalData?.aiSummary3Lines || []} dateStr={terminalData?.todayDateFormatted || ''} />
+        {terminalData?.ipml && <IpmlGauge ipml={terminalData.ipml} />}
+        {terminalData?.compass && <CompassAndMovers compass={terminalData.compass} drivers={terminalData?.drivers || []} />}
+        {terminalData?.industryHumor && <IndustryHumor humor={terminalData.industryHumor} />}
+        <ImpactRadarAndTimeline radarCards={terminalData?.impactRadar || []} timeline={terminalData?.weeklyTimeline || []} />
+        {terminalData?.climateRadar && <ClimateRadar climate={terminalData.climateRadar} />}
       </main>
       <ScenarioModal isOpen={isScenarioModalOpen} onClose={() => setIsScenarioModalOpen(false)} presets={SAMPLE_PRESETS} activePresetId={activePresetId} onSelectPreset={handleSelectPreset} />
       <CustomAnalysisModal isOpen={isCustomModalOpen} onClose={() => setIsCustomModalOpen(false)} onRunAnalysis={runAnalysis} isAnalyzing={isAnalyzing} />
       
-      {/* RODAPÉ ATUALIZADO COM ASSINATURA E IDENTIDADE */}
+      {/* RODAPÉ BLINDADO COM ASSINATURA */}
       <footer className="bg-slate-950 border-t border-slate-900 py-6 text-xs text-slate-500 font-mono">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex flex-col sm:flex-row items-center gap-2">
@@ -99,7 +114,7 @@ export default function App() {
           <div className="flex flex-wrap items-center justify-center gap-4 text-[11px] text-slate-500">
             <span>Fontes: CEPEA / Scot / B3 / MilkPoint</span>
             <span className="text-cyan-400 font-bold">
-              {terminalData.timestamp ? `Última atualização: ${terminalData.timestamp}` : 'Sinais em validação'}
+              {terminalData?.timestamp ? `Última atualização: ${terminalData.timestamp}` : 'Sinais em validação'}
             </span>
           </div>
         </div>
