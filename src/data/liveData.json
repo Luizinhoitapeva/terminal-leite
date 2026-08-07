@@ -1,51 +1,98 @@
 {
   "todayDateFormatted": "Sexta-feira, 07 de agosto de 2026",
+  "createdBy": "Criado por LD",
+  "whatChanged": [
+    {
+      "indicator": "IPML",
+      "previous": "79.0",
+      "current": "84.2",
+      "trend": "▲ +5.2"
+    },
+    {
+      "indicator": "Leite Spot",
+      "previous": "R$ 3,02/L",
+      "current": "R$ 3,08/L",
+      "trend": "▲ +2.0%"
+    },
+    {
+      "indicator": "Captação GO/MG",
+      "previous": "-2,8%",
+      "current": "-3,4%",
+      "trend": "▼ Piora"
+    },
+    {
+      "indicator": "Milho B3",
+      "previous": "R$ 67,20",
+      "current": "R$ 68,50",
+      "trend": "▲ Alta"
+    },
+    {
+      "indicator": "Clima GO",
+      "previous": "Alerta",
+      "current": "Seca Severa",
+      "trend": "🔴 Crítico"
+    }
+  ],
   "aiSummary3Lines": [
-    "Déficit hídrico severo no cinturão central (GO e Triângulo Mineiro) derruba a captação de leite cru em 3,4%, intensificando a disputa interindustrial no mercado spot.",
-    "A escalada dos custos operacionais na B3 (Milho +3,8% e Soja +2,4%) eleva o break-even dos produtores e anula qualquer margem para flexibilização de preços na ponta de captação.",
-    "Firmeza no consumo de lácteos no atacado (UHT e queijos) valida o repasse de preços e sustenta o viés altista para a primeira quinzena de agosto."
+    "A intensificação da estiagem severa em GO e MG reduziu a captação regional em 3,4%, forçando indústrias a ampliarem a disputa por lotes no mercado spot.",
+    "A escalada dos custos de ração na B3 (Milho a R$ 68,50) estabelece um piso rígido para os preços ao produtor, limitando margens industriais.",
+    "O IPML atinge 84.2/100 sob forte convergência estatística (94%), sinalizando sustentação do viés altista no atacado de lácteos para o curto prazo."
   ],
   "ipml": {
-    "score": 82,
-    "statusLabel": "PRESSÃO ALTISTA EXTREMA (82/100)",
+    "score": 84.2,
+    "statusLabel": "PRESSÃO ALTISTA EXTREMA (84.2/100)",
     "factors": [
       {
         "label": "Leite Spot em Alta (+R$ 0,22/L ágio)",
-        "points": 18,
+        "points": "+27.3 pts",
         "type": "positive",
-        "explanation": "Forte assimetria entre oferta e demanda eleva ágio do spot para garantir o abastecimento industrial."
+        "explanation": "Forte disputa entre laticínios por lotes (Peso 30%)."
       },
       {
         "label": "Recuo na Captação Regional (-3,4% clima seco)",
-        "points": 15,
+        "points": "+22.0 pts",
         "type": "positive",
-        "explanation": "Estiagem prolongada em GO e MG compromete a qualidade das pastagens e acelera a queda na curva de lactação."
+        "explanation": "Estiagem em GO e Triângulo Mineiro afeta oferta (Peso 25%)."
       },
       {
-        "label": "Custos de Ração na B3 (Milho +3,8%)",
-        "points": 12,
+        "label": "Repasse no Atacado (UHT e Muçarela)",
+        "points": "+11.9 pts",
         "type": "positive",
-        "explanation": "Pressão cambial e demanda externa por grãos encarecem a dieta concentrada, estreitando margens do produtor."
-      },
-      {
-        "label": "Repasse no Atacado (UHT +2,1% e Muçarela)",
-        "points": 10,
-        "type": "positive",
-        "explanation": "Canais de distribuição absorvem reajustes diante de estoques baixos na indústria de lácteos."
+        "explanation": "Supermercados absorvem reajustes (Peso 15%)."
       },
       {
         "label": "Queda nas Importações (-2,3% Mercosul)",
-        "points": 7,
+        "points": "+7.2 pts",
         "type": "positive",
-        "explanation": "Menor competitividade do leite em pó importado reduz a pressão deflacionária interna."
+        "explanation": "Menor entrada de pó da Argentina (Peso 10%)."
       },
       {
-        "label": "Entrada de Safra Pontual no Sul",
-        "points": -6,
-        "type": "negative",
-        "explanation": "Início do pico de safra na região Sul eleva a oferta local e atua como limitador parcial de altas ainda mais agressivas."
+        "label": "Custos de Ração na B3 (Milho +3,8%)",
+        "points": "+8.4 pts",
+        "type": "positive",
+        "explanation": "Sustenta o piso de custo das fazendas (Peso 10%)."
+      },
+      {
+        "label": "Clima adverso nas Bacias Centrais",
+        "points": "+3.9 pts",
+        "type": "positive",
+        "explanation": "Impacto da estiagem nas pastagens (Peso 5%)."
+      },
+      {
+        "label": "Câmbio e Paridade de Exportação",
+        "points": "+3.5 pts",
+        "type": "positive",
+        "explanation": "Sustentação cambial (Peso 5%)."
       }
-    ]
+    ],
+    "weightsInfo": "Pesos: Spot 30% • Captação 25% • Derivados 15% • Importação 10% • Insumos 10% • Clima 5% • Câmbio 5%"
+  },
+  "signalConfidence": {
+    "convergence": "94%",
+    "sourceQuality": "90%",
+    "freshness": "97%",
+    "conflictIndex": "8%",
+    "finalConfidence": "91%"
   },
   "compass": {
     "marketDirection": "comprador",
@@ -71,7 +118,7 @@
   "drivers": [
     {
       "id": "drv-1",
-      "text": "Escassez de oferta no Sudeste e Centro-Oeste força indústrias a operarem com ágios agressivos de até +R$ 0,22/litro no mercado spot para evitar ociosidade fabril.",
+      "text": "Leite Spot pressionado no Sudeste com ágio estimado de até +R$ 0,22/litro pago pelas indústrias.",
       "direction": "up",
       "impactTag": "+R$ 0,22/L Ágio"
     }
@@ -80,11 +127,11 @@
     "italac": {
       "name": "Italac",
       "isMainHighlight": true,
-      "appetite": "COMPRANDO FORTE",
+      "appetite": "COMPRANDO FORTE (Estimativa Analítica de Campo)",
       "statusType": "buyer_strong",
       "regionNote": "GO, MG, SP, PR, RS",
-      "spotPremium": "Ágio Agressivo (+R$ 0,18 a +R$ 0,24 / L)",
-      "strategyText": "Adoção de postura agressiva de originação no spot para assegurar volumes mínimos de processamento e mitigar a ociosidade nas plantas de GO e MG."
+      "spotPremium": "Ágio Agressivo Estimado (+R$ 0,18 a +R$ 0,24 / L)",
+      "strategyText": "Modelagem de fluxo de leite indica provável aceleração na captação para abastecimento das plantas de Corumbaíba (GO) e Passos (MG), refletindo o aperto na oferta regional."
     },
     "competitors": [
       {
@@ -94,41 +141,79 @@
         "statusType": "buyer_strong",
         "regionNote": "GO, MG, SP",
         "spotPremium": "Ágio de R$ 0,15 / Litro",
-        "strategyText": "Intensificação da disputa por tanques na bacia do Centro-Oeste, acompanhando a escalada de preços para reter base de fornecedores."
+        "strategyText": "Disputando tanques na bacia do Centro-Oeste para proteger market share."
       }
     ]
   },
   "impactRadar": [
     {
       "id": "rad-1",
-      "title": "Guerra de Prêmios: Italac e Piracanjuba Elevam Ágios no Spot para Reter Fornecedores",
-      "summary": "A acirrada disputa por matéria-prima entre grandes players do setor eleva a cotação de referência do leite spot para R$ 3,10/L nas principais bacias leiteiras.",
+      "title": "Italac e Piracanjuba Elevam Ágios no Mercado Spot para Segurar Leite Cru",
+      "summary": "A disputa acirrada entre as gigantes elevou a cotação do spot para R$ 3,10/L.",
       "direction": "alta",
       "impactScore": 9.2,
       "category": "Mercado Spot",
-      "source": "MilkPoint",
-      "publishedTime": "Hoje, 08:15"
+      "source": "MilkPoint / Scot Consultoria",
+      "publishedTime": "Hoje, 08:15",
+      "sourceUrl": "https://www.milkpoint.com.br"
+    },
+    {
+      "id": "rad-2",
+      "title": "Captação do Leite Recua 3,4% no Sudeste sob Efeito de Estiagem Severa",
+      "summary": "Boletim do ICAP-L aponta escassez de pastagens de qualidade.",
+      "direction": "alta",
+      "impactScore": 8.7,
+      "category": "Oferta no Campo",
+      "source": "CEPEA / ICAP-L",
+      "publishedTime": "Hoje, 07:40",
+      "sourceUrl": "https://www.cepea.esalq.usp.br"
     }
   ],
   "weeklyTimeline": [
     {
       "day": "Seg",
       "dateStr": "03/Ago",
-      "eventTitle": "Abertura semanal com forte pressão compradora e valorização de +1,8% no spot SP/GO.",
+      "eventTitle": "Leite Spot abre a semana com alta de +1,8% no SP/GO",
       "direction": "alta",
-      "impactTag": "Spot"
+      "impactTag": "Spot",
+      "ipmlImpact": "IPML +4"
+    },
+    {
+      "day": "Ter",
+      "dateStr": "04/Ago",
+      "eventTitle": "Leilão GDT Global fecha em alta de +2,4%",
+      "direction": "alta",
+      "impactTag": "GDT",
+      "ipmlImpact": "IPML +2"
+    },
+    {
+      "day": "Qua",
+      "dateStr": "05/Ago",
+      "eventTitle": "Sinais de reajuste nas bacias de GO/MG",
+      "direction": "alta",
+      "impactTag": "Captação",
+      "ipmlImpact": "IPML +5"
+    },
+    {
+      "day": "Qui",
+      "dateStr": "06/Ago",
+      "eventTitle": "Milho B3 renova máxima a R$ 68,50/saca",
+      "direction": "alta",
+      "impactTag": "B3",
+      "ipmlImpact": "IPML +3"
     },
     {
       "day": "Sex",
       "dateStr": "Hoje",
-      "eventTitle": "IPML atinge 82/100 refletindo o aperto na oferta de leite cru confirmado pelos dados de captação do CEPEA.",
+      "eventTitle": "IPML Consolidado 84.2/100 - Viés Altista",
       "direction": "alta",
       "impactTag": "IPML",
-      "isToday": true
+      "isToday": true,
+      "ipmlImpact": "Consolidado"
     }
   ],
   "climateRadar": {
-    "summary15Days": "Bloqueio atmosférico mantém padrão de seca severa em Goiás e Minas Gerais, inviabilizando a recuperação das pastagens no curto prazo.",
+    "summary15Days": "A seca persistente em Goiás e Minas Gerais reduz pastagens e pressiona a captação.",
     "nationalRegions": [
       {
         "region": "Goiás (GO)",
@@ -136,7 +221,19 @@
         "weatherType": "drought",
         "impactDirection": "alta",
         "impactLabel": "Altista",
-        "details": "Estiagem prolongada eleva custos com silagem e ração concentrada devido à degradação severa das pastagens."
+        "source": "INMET",
+        "updatedAt": "07/08 15:00",
+        "details": "Prejuízo aos pastos e necessidade de suplementação."
+      },
+      {
+        "region": "Minas Gerais (MG)",
+        "condition": "Estiagem Triângulo & Norte",
+        "weatherType": "drought",
+        "impactDirection": "alta",
+        "impactLabel": "Altista",
+        "source": "INMET",
+        "updatedAt": "07/08 15:00",
+        "details": "Menor captação nas bacias de Passos e Patos de Minas."
       }
     ],
     "globalRegions": [
@@ -146,7 +243,9 @@
         "weatherType": "sun",
         "impactDirection": "neutro",
         "impactLabel": "Neutro",
-        "details": "Condições climáticas favoráveis na Oceania sustentam volumes estáveis, sem impactos imediatos nos preços de exportação do GDT."
+        "source": "Fonterra / GDT",
+        "updatedAt": "04/08",
+        "details": "Embarques sem choques no leilão GDT."
       }
     ]
   },
@@ -164,5 +263,6 @@
       "status": "up"
     }
   ],
-  "timestamp": "Atualizado 16:02"
+  "timestamp": "Atualizado 16:14",
+  "precisionStatus": "Precisão histórica: em validação (30 observações pendentes)"
 }
