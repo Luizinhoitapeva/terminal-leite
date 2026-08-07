@@ -11,9 +11,6 @@ def generate_real_terminal_data():
 
     client = genai.Client(api_key=api_key)
 
-    today_str = datetime.now().strftime("%d/%m/%Y")
-    formatted_date = datetime.now().strftime("%A, %d de %B de %Y").replace("", "") # ou ajuste o formato em PT
-
     system_instruction = """
     Você é um analista sênior do Bloomberg Terminal especializado no mercado físico de comercialização de leite cru no Brasil para laticínios industriais (com destaque máximo para a ITALAC). 
     Sua tarefa é simular a captação de dados recentes do mercado de leite (MilkPoint, CEPEA, B3, Clima nas bacias de MG, GO, PR, Nova Zelândia, Mercosul) e produzir um objeto JSON preditivo real para o terminal com os seguintes campos exatos:
@@ -98,8 +95,9 @@ def generate_real_terminal_data():
     Retorne estritamente APENAS o JSON válido.
     """
 
+    # Utilizando o modelo atual correto para o SDK do Google GenAI
     response = client.models.generate_content(
-        model='gemini-1.5-flash',
+        model='gemini-2.0-flash',
         contents="Gere a análise preditiva atualizada para o terminal do leite de hoje.",
         config=types.GenerateContentConfig(
             system_instruction=system_instruction,
@@ -110,7 +108,6 @@ def generate_real_terminal_data():
 
     data = json.loads(response.text)
     
-    # Salva na pasta pública do projeto React para o site ler estaticamente
     output_path = os.path.join("src", "data", "liveData.json")
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     
