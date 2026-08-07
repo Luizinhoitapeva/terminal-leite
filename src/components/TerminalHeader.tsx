@@ -32,7 +32,7 @@ export const TerminalHeader: React.FC<TerminalHeaderProps> = ({
             <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
             LIVE TICKER B3 & SPOT:
           </div>
-          {tickers.map((item, idx) => (
+          {tickers?.map((item, idx) => (
             <div key={idx} className="flex items-center gap-2 shrink-0 bg-slate-950/80 px-2.5 py-1 rounded border border-slate-800">
               <span className="text-slate-400 font-semibold">{item.label}:</span>
               <span className="font-bold text-slate-100">{item.value}</span>
@@ -79,7 +79,7 @@ export const TerminalHeader: React.FC<TerminalHeaderProps> = ({
               <h1 className="text-xl sm:text-2xl font-black tracking-tight text-white flex items-center gap-2 mt-0.5">
                 Terminal de Inteligência Preditiva
                 <span className="text-xs font-mono font-normal text-slate-400 hidden sm:inline-block">
-                  v3.8 • Atualizado {timestamp}
+                  v4.0 • {timestamp || 'Atualizado'}
                 </span>
               </h1>
             </div>
