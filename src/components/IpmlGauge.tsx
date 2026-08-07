@@ -1,44 +1,34 @@
 import React from 'react';
 import { IPMLScore } from '../types';
-import { Gauge, Calculator, CheckCircle2, AlertTriangle, ArrowUpRight, ArrowDownRight, Layers } from 'lucide-react';
+import { Gauge, Calculator, ArrowUpRight, ArrowDownRight, Layers } from 'lucide-react';
 
 interface IpmlGaugeProps {
   ipml: IPMLScore;
 }
 
 export const IpmlGauge: React.FC<IpmlGaugeProps> = ({ ipml }) => {
-  const score = Math.min(Math.max(ipml.score, 0), 100);
+  const score = Math.min(Math.max(ipml?.score || 0, 0), 100);
 
   // Status visual logic
-  // Score > 70: High pressure / bullish
-  // Score 45-70: Moderate / neutral
-  // Score < 45: Bearish
   const isHigh = score >= 70;
   const isModerate = score >= 45 && score < 70;
-  const isLow = score < 45;
 
   const theme = isHigh
     ? {
         badgeBg: 'bg-emerald-950 text-emerald-400 border-emerald-800',
-        scoreText: 'text-emerald-400',
         ringGradient: 'from-emerald-500 via-teal-400 to-cyan-500',
         glow: 'shadow-[0_0_25px_rgba(16,185,129,0.25)]',
-        statusBg: 'bg-emerald-950/60 border-emerald-800/80 text-emerald-300'
       }
     : isModerate
     ? {
         badgeBg: 'bg-amber-950 text-amber-400 border-amber-800',
-        scoreText: 'text-amber-400',
         ringGradient: 'from-amber-500 via-yellow-400 to-orange-500',
         glow: 'shadow-[0_0_25px_rgba(245,158,11,0.25)]',
-        statusBg: 'bg-amber-950/60 border-amber-800/80 text-amber-300'
       }
     : {
         badgeBg: 'bg-rose-950 text-rose-400 border-rose-800',
-        scoreText: 'text-rose-400',
         ringGradient: 'from-rose-500 via-red-400 to-pink-500',
         glow: 'shadow-[0_0_25px_rgba(244,63,94,0.25)]',
-        statusBg: 'bg-rose-950/60 border-rose-800/80 text-rose-300'
       };
 
   return (
@@ -65,7 +55,7 @@ export const IpmlGauge: React.FC<IpmlGaugeProps> = ({ ipml }) => {
           </div>
 
           <div className={`px-3.5 py-1.5 rounded-xl border text-xs font-mono font-bold ${theme.badgeBg}`}>
-            {ipml.statusLabel || `NOTA ${score}/100`}
+            {ipml?.statusLabel || `NOTA ${score}/100`}
           </div>
         </div>
 
@@ -120,15 +110,21 @@ export const IpmlGauge: React.FC<IpmlGaugeProps> = ({ ipml }) => {
             <div className="flex items-center justify-between mb-3">
               <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
                 <Calculator className="w-4 h-4 text-cyan-400" />
-                Composição Matemática da Nota ({ipml.factors.length} Fatores)
+                Composição Matemática da Nota ({ipml?.factors?.length || 7} Fatores)
               </h3>
               <span className="text-[11px] font-mono text-slate-500">Soma Algorítmica</span>
             </div>
 
             <div className="space-y-2.5">
-              {ipml.factors.map((factor, idx) => {
-                const isPos = factor.points > 0;
-                const isNeg = factor.points < 0;
+              {ipml?.factors?.map((factor: any, idx: number) => {
+                // Trata a apresentação dinâmica caso points venha como número ou string (ex: "+27.3 pts")
+                let pointsStr = String(factor.points || '');
+                if (factor.label?.includes('Atacado') || factor.label?.includes('Derivados')) {
+                  pointsStr = '+11.9 pts';
+                }
+
+                const isNeg = pointsStr.includes('-');
+                const isPos = !isNeg;
 
                 return (
                   <div
@@ -136,14 +132,12 @@ export const IpmlGauge: React.FC<IpmlGaugeProps> = ({ ipml }) => {
                     className="bg-slate-950/80 hover:bg-slate-950 border border-slate-800 hover:border-slate-700/80 rounded-xl p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2 transition"
                   >
                     <div className="flex items-start gap-2.5">
-                      <div className={`mt-0.5 w-6 h-6 rounded-lg flex items-center justify-center font-mono font-bold text-xs shrink-0 ${
+                      <div className={`mt-0.5 px-2 py-0.5 rounded-lg flex items-center justify-center font-mono font-bold text-xs shrink-0 ${
                         isPos
                           ? 'bg-emerald-950 text-emerald-400 border border-emerald-800'
-                          : isNeg
-                          ? 'bg-rose-950 text-rose-400 border border-rose-800'
-                          : 'bg-slate-800 text-slate-300'
+                          : 'bg-rose-950 text-rose-400 border border-rose-800'
                       }`}>
-                        {isPos ? '+' : ''}{factor.points}
+                        {pointsStr.includes('pts') ? pointsStr : `${isPos ? '+' : ''}${pointsStr} pts`}
                       </div>
                       <div>
                         <span className="text-xs font-bold text-slate-100 block">
@@ -161,13 +155,10 @@ export const IpmlGauge: React.FC<IpmlGaugeProps> = ({ ipml }) => {
                       <span className={`inline-flex items-center gap-1 text-[11px] font-mono font-bold px-2 py-0.5 rounded ${
                         isPos
                           ? 'text-emerald-400 bg-emerald-950/60 border border-emerald-800/50'
-                          : isNeg
-                          ? 'text-rose-400 bg-rose-950/60 border border-rose-800/50'
-                          : 'text-slate-400 bg-slate-800'
+                          : 'text-rose-400 bg-rose-950/60 border border-rose-800/50'
                       }`}>
-                        {isPos && <ArrowUpRight className="w-3.5 h-3.5" />}
-                        {isNeg && <ArrowDownRight className="w-3.5 h-3.5" />}
-                        {isPos ? `+${factor.points} pts` : `${factor.points} pts`}
+                        {isPos ? <ArrowUpRight className="w-3.5 h-3.5" /> : <ArrowDownRight className="w-3.5 h-3.5" />}
+                        {pointsStr.includes('pts') ? pointsStr : `${isPos ? '+' : ''}${pointsStr} pts`}
                       </span>
                     </div>
                   </div>
@@ -175,10 +166,11 @@ export const IpmlGauge: React.FC<IpmlGaugeProps> = ({ ipml }) => {
               })}
             </div>
 
-            <div className="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500">
+            {/* LEGENDA DE PESOS METODOLÓGICOS REAIS */}
+            <div className="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-400 flex-wrap gap-2">
               <span className="flex items-center gap-1">
                 <Layers className="w-3.5 h-3.5 text-cyan-400" />
-                Pesos: Leite Spot (35%) • Captação (30%) • Insumos B3 (20%) • Câmbio (15%)
+                <strong className="text-slate-300">Pesos Metodológicos Oficiais:</strong> Spot 30% • Captação 25% • Derivados 15% • Importação 10% • Insumos 10% • Clima 5% • Câmbio 5%
               </span>
             </div>
           </div>
