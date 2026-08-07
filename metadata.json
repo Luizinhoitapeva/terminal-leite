@@ -1,0 +1,6 @@
+{
+  "name": "Monitor do Mercado Leiteiro",
+  "description": "Terminal de inteligência preditiva para negociação de leite cru e fornecimento industrial, com foco na Italac, Índice IPML, bússola de tendência e radar de impacto.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
