@@ -10,7 +10,6 @@ import { ImpactRadarAndTimeline } from './components/ImpactRadarAndTimeline';
 import { ClimateRadar } from './components/ClimateRadar';
 import { ScenarioModal } from './components/ScenarioModal';
 import { CustomAnalysisModal } from './components/CustomAnalysisModal';
-import { Terminal, ShieldCheck, Activity, Layers } from 'lucide-react';
 
 export default function App() {
   const [terminalData, setTerminalData] = useState<TerminalData>(INITIAL_TERMINAL_DATA);
@@ -19,7 +18,21 @@ export default function App() {
   const [isScenarioModalOpen, setIsScenarioModalOpen] = useState<boolean>(false);
   const [isCustomModalOpen, setIsCustomModalOpen] = useState<boolean>(false);
 
-  // Call API to analyze custom input or preset texts
+  // Carrega o liveData.json gerado pelo robô assim que a página abre
+  useEffect(() => {
+    fetch('/src/data/liveData.json')
+      .then((res) => {
+        if (res.ok) return res.json();
+        throw new Error('Live data not found');
+      })
+      .then((data) => {
+        if (data) setTerminalData(data);
+      })
+      .catch((err) => {
+        console.log('Usando dados padrão/fallback locais:', err);
+      });
+  }, []);
+
   const runAnalysis = useCallback(async (milkText: string, cepeaText: string) => {
     setIsAnalyzing(true);
     try {
@@ -28,7 +41,6 @@ export default function App() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ milkPointText: milkText, cepeaText: cepeaText })
       });
-
       if (response.ok) {
         const data = await response.json();
         setTerminalData(data);
@@ -52,8 +64,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans antialiased flex flex-col selection:bg-cyan-500 selection:text-slate-950">
-      
-      {/* Bloomberg Terminal Top Bar & Header */}
       <TerminalHeader
         dateStr={terminalData.todayDateFormatted}
         tickers={terminalData.tickers}
@@ -64,75 +74,28 @@ export default function App() {
         onOpenCustomInput={() => setIsCustomModalOpen(true)}
         onRefresh={handleRefresh}
       />
-
-      {/* Main Terminal Dashboard Body */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        
-        {/* SECTION 1: Cabeçalho de Decisão Rápida (Resumo de 3 linhas gerado por IA) */}
-        <FastDecisionHeader
-          summary3Lines={terminalData.aiSummary3Lines}
-          dateStr={terminalData.todayDateFormatted}
-        />
-
-        {/* SECTION 2: Painel Principal - IPML (Índice de Pressão do Mercado Leiteiro + Composição Matemática) */}
+        <FastDecisionHeader summary3Lines={terminalData.aiSummary3Lines} dateStr={terminalData.todayDateFormatted} />
         <IpmlGauge ipml={terminalData.ipml} />
-
-        {/* SECTION 3: Direção e Movimentadores (Grid 2 colunas: Bússola Comercial & Drivers) */}
-        <CompassAndMovers
-          compass={terminalData.compass}
-          drivers={terminalData.drivers}
-        />
-
-        {/* SECTION 4: Humor da Indústria (Apetite de Compra com Destaque para ITALAC) */}
+        <CompassAndMovers compass={terminalData.compass} drivers={terminalData.drivers} />
         <IndustryHumor humor={terminalData.industryHumor} />
-
-        {/* SECTION 5: Radar de Impacto (Cards com Score 0-10) e Linha do Tempo Semanal */}
-        <ImpactRadarAndTimeline
-          radarCards={terminalData.impactRadar}
-          timeline={terminalData.weeklyTimeline}
-        />
-
-        {/* SECTION 6: Radar Climático Estratégico (O Peso do Clima na Oferta) */}
-        {terminalData.climateRadar && (
-          <ClimateRadar climate={terminalData.climateRadar} />
-        )}
-
+        <ImpactRadarAndTimeline radarCards={terminalData.impactRadar} timeline={terminalData.weeklyTimeline} />
+        {terminalData.climateRadar && <ClimateRadar climate={terminalData.climateRadar} />}
       </main>
-
-      {/* Terminal Modals */}
-      <ScenarioModal
-        isOpen={isScenarioModalOpen}
-        onClose={() => setIsScenarioModalOpen(false)}
-        presets={SAMPLE_PRESETS}
-        activePresetId={activePresetId}
-        onSelectPreset={handleSelectPreset}
-      />
-
-      <CustomAnalysisModal
-        isOpen={isCustomModalOpen}
-        onClose={() => setIsCustomModalOpen(false)}
-        onRunAnalysis={runAnalysis}
-        isAnalyzing={isAnalyzing}
-      />
-
-      {/* Bloomberg Executive Footer */}
+      <ScenarioModal isOpen={isScenarioModalOpen} onClose={() => setIsScenarioModalOpen(false)} presets={SAMPLE_PRESETS} activePresetId={activePresetId} onSelectPreset={handleSelectPreset} />
+      <CustomAnalysisModal isOpen={isCustomModalOpen} onClose={() => setIsCustomModalOpen(false)} onRunAnalysis={runAnalysis} isAnalyzing={isAnalyzing} />
       <footer className="bg-slate-950 border-t border-slate-900 py-6 text-xs text-slate-500 font-mono">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-cyan-400"></div>
-            <span className="font-bold text-slate-200">Terminal Bloomberg • Inteligência do Leite Cru</span>
-            <span className="text-slate-600">|</span>
-            <span className="text-slate-400">Plataforma Preditiva para Laticínios e Italac</span>
+            <span className="font-bold text-slate-200">Terminal Bloomberg – Inteligência do Leite Cru</span>
           </div>
-
           <div className="flex items-center gap-4 text-[11px] text-slate-500">
             <span>Fontes: CEPEA / Scot / B3 / MilkPoint</span>
-            <span className="text-slate-600">•</span>
             <span className="text-cyan-400 font-bold">Acurácia Preditiva IPML: 94.2%</span>
           </div>
         </div>
       </footer>
-
     </div>
   );
 }
