@@ -1,7 +1,7 @@
 {
   "ipml": {
-    "score": 84,
-    "statusLabel": "PRESSÃO ALTISTA EXTREMA (84/100)",
+    "score": 85,
+    "statusLabel": "PRESSÃO ALTISTA EXTREMA (85/100)",
     "factors": [
       {
         "label": "Leite Spot em Alta",
@@ -13,33 +13,33 @@
       },
       {
         "label": "Recuo na Captação Regional",
-        "score": 88,
+        "score": 89,
         "weight": "25%",
-        "points": "+22.0 pts",
+        "points": "+22.2 pts",
         "type": "positive",
         "explanation": "Redução da oferta de leite cru."
       },
       {
         "label": "Repasse no Atacado",
-        "score": 79,
+        "score": 81,
         "weight": "15%",
-        "points": "+11.8 pts",
+        "points": "+12.2 pts",
         "type": "positive",
         "explanation": "Movimento de preços em UHT e derivados."
       },
       {
         "label": "Importações",
-        "score": 72,
+        "score": 74,
         "weight": "10%",
-        "points": "+7.2 pts",
+        "points": "+7.4 pts",
         "type": "positive",
         "explanation": "Comportamento das entradas de lácteos."
       },
       {
         "label": "Custos de Ração / B3",
-        "score": 84,
+        "score": 85,
         "weight": "10%",
-        "points": "+8.4 pts",
+        "points": "+8.5 pts",
         "type": "positive",
         "explanation": "Pressão dos custos de produção."
       },
@@ -57,10 +57,10 @@
         "weight": "5%",
         "points": "+3.5 pts",
         "type": "positive",
-        "explanation": "Impacto cambial sobre importação/exportação."
+        "explanation": "Dólar em R$ 5,42 impacta insumos e importação."
       }
     ],
-    "weightsInfo": "Pesos Metodológicos: Spot 30% • Captação 25% • Derivados 15% • Importação 10% • Insumos 10% • Clima 5% • Câmbio 5%"
+    "weightsInfo": "Pesos Metodológicos Oficiais: Spot 30% • Captação 25% • Derivados 15% • Importação 10% • Insumos 10% • Clima 5% • Câmbio 5%"
   },
   "signalConfidence": {
     "convergence": "94%",
@@ -73,9 +73,9 @@
   "whatChanged": [
     {
       "indicator": "IPML",
-      "previous": "79.0",
-      "current": "84",
-      "trend": "▲ +5.0"
+      "previous": "82.0",
+      "current": "85",
+      "trend": "▲ +3.0"
     },
     {
       "indicator": "Leite Spot",
@@ -84,10 +84,10 @@
       "trend": "▲ +2,0%"
     },
     {
-      "indicator": "Captação GO/MG",
-      "previous": "-2,8%",
-      "current": "-3,4%",
-      "trend": "▼ Piora"
+      "indicator": "Dólar",
+      "previous": "R$ 5,38",
+      "current": "R$ 5,42",
+      "trend": "▲ Ao Vivo"
     },
     {
       "indicator": "Milho B3",
@@ -126,6 +126,12 @@
       "label": "MILHO B3",
       "value": "R$ 68,50 / Saca",
       "change": "+1,4%",
+      "status": "up"
+    },
+    {
+      "label": "DÓLAR FUTURO",
+      "value": "R$ 5,42",
+      "change": "Ao Vivo",
       "status": "up"
     }
   ],
@@ -202,7 +208,7 @@
     {
       "day": "Sex",
       "dateStr": "Hoje",
-      "eventTitle": "IPML Consolidado 84/100 - Viés Altista",
+      "eventTitle": "IPML Consolidado 85/100 - Viés Altista",
       "direction": "alta",
       "impactTag": "IPML",
       "isToday": true,
@@ -231,26 +237,26 @@
       }
     ]
   },
-  "todayDateFormatted": "Sexta-feira, 07 de agosto de 2026",
+  "todayDateFormatted": "Monday, 10 de august de 2026",
   "createdBy": "Criado por LD",
-  "timestamp": "Atualizado 08:40",
+  "timestamp": "Atualizado 12:31",
   "compass": {
     "marketDirection": "comprador",
     "directionBadge": "COMPRADOR (ALTA DOS PREÇOS)",
     "periods": {
       "d7": {
         "label": "7 Dias",
-        "probabilityText": "Alta Forte (84%)",
+        "probabilityText": "84/100",
         "direction": "alta"
       },
       "d15": {
         "label": "15 Dias",
-        "probabilityText": "Alta Moderada (76%)",
+        "probabilityText": "76/100",
         "direction": "alta"
       },
       "d30": {
         "label": "30 Dias",
-        "probabilityText": "Estável (58%)",
+        "probabilityText": "58/100",
         "direction": "estabilidade"
       }
     }
