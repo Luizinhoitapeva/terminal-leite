@@ -1,21 +1,21 @@
 {
   "ipml": {
-    "score": 85,
-    "statusLabel": "PRESSÃO ALTISTA EXTREMA (85/100)",
+    "score": 84,
+    "statusLabel": "PRESSÃO ALTISTA EXTREMA (84/100)",
     "factors": [
       {
         "label": "Leite Spot em Alta",
-        "score": 91,
+        "score": 92,
         "weight": "30%",
-        "points": "+27.3 pts",
+        "points": "+27.6 pts",
         "type": "positive",
         "explanation": "Forte pressão compradora no mercado spot."
       },
       {
         "label": "Recuo na Captação Regional",
-        "score": 89,
+        "score": 87,
         "weight": "25%",
-        "points": "+22.2 pts",
+        "points": "+21.8 pts",
         "type": "positive",
         "explanation": "Redução da oferta de leite cru."
       },
@@ -29,25 +29,25 @@
       },
       {
         "label": "Importações",
-        "score": 74,
+        "score": 71,
         "weight": "10%",
-        "points": "+7.4 pts",
+        "points": "+7.1 pts",
         "type": "positive",
         "explanation": "Comportamento das entradas de lácteos."
       },
       {
         "label": "Custos de Ração / B3",
-        "score": 85,
+        "score": 83,
         "weight": "10%",
-        "points": "+8.5 pts",
+        "points": "+8.3 pts",
         "type": "positive",
         "explanation": "Pressão dos custos de produção."
       },
       {
         "label": "Clima nas Bacias",
-        "score": 78,
+        "score": 80,
         "weight": "5%",
-        "points": "+3.9 pts",
+        "points": "+4.0 pts",
         "type": "positive",
         "explanation": "Impacto climático sobre a oferta."
       },
@@ -74,8 +74,8 @@
     {
       "indicator": "IPML",
       "previous": "82.0",
-      "current": "85",
-      "trend": "▲ +3.0"
+      "current": "84",
+      "trend": "▲ +2.0"
     },
     {
       "indicator": "Leite Spot",
@@ -208,7 +208,7 @@
     {
       "day": "Sex",
       "dateStr": "Hoje",
-      "eventTitle": "IPML Consolidado 85/100 - Viés Altista",
+      "eventTitle": "IPML Consolidado 84/100 - Viés Altista",
       "direction": "alta",
       "impactTag": "IPML",
       "isToday": true,
@@ -237,9 +237,9 @@
       }
     ]
   },
-  "todayDateFormatted": "Monday, 10 de august de 2026",
+  "todayDateFormatted": "Tuesday, 11 de august de 2026",
   "createdBy": "Criado por LD",
-  "timestamp": "Atualizado 12:31",
+  "timestamp": "Atualizado 08:11",
   "compass": {
     "marketDirection": "comprador",
     "directionBadge": "COMPRADOR (ALTA DOS PREÇOS)",
