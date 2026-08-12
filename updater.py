@@ -2,10 +2,16 @@ import os
 import json
 import random
 import urllib.request
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 
-from google import genai
-from google.genai import types
+# ============================================================================
+# CONFIGURAÇÃO DE FUSO HORÁRIO (BRASÍLIA / GMT-3)
+# ============================================================================
+
+def get_brasilia_time():
+    """Retorna o horário exato de Brasília (GMT-3), ignorando o UTC do servidor do GitHub."""
+    tz_brasilia = timezone(timedelta(hours=-3))
+    return datetime.now(tz_brasilia)
 
 # ============================================================================
 # CONFIGURAÇÃO E INTEGRAÇÃO BANCO DE DADOS (SUPABASE)
@@ -19,7 +25,7 @@ SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
 
 
 def save_to_supabase(record_data):
-    """Envia a leitura atual para a tabela do Supabase via REST API."""
+    """Envia a leitura atual para a tabela do Supabase via REST API com autorização Service Role."""
     if not SUPABASE_URL or not SUPABASE_KEY:
         print("Aviso: SUPABASE_URL ou SUPABASE_KEY não configuradas. Pulando gravação em banco.")
         return
@@ -111,6 +117,8 @@ indicators = {
 ipml_calculated = calculate_ipml(indicators)
 ipml_final = int(round(ipml_calculated))
 
+now_br = get_brasilia_time()
+
 # ============================================================================
 # PERSISTÊNCIA EM BANCO DE DADOS
 # ============================================================================
@@ -162,10 +170,18 @@ for key, label, explanation in factor_definitions:
         "explanation": explanation
     })
 
+# Formatador com fuso horário de Brasília (GMT-3)
+dias_semana = ["Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado", "Domingo"]
+meses = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"]
+
+dia_str = dias_semana[now_br.weekday()]
+mes_str = meses[now_br.month - 1]
+data_formatada_br = f"{dia_str}, {now_br.day:02d} de {mes_str} de {now_br.year}"
+
 template_data = {
-    "todayDateFormatted": datetime.now().strftime("%A, %d de %B de %Y").capitalize(),
+    "todayDateFormatted": data_formatada_br,
     "createdBy": "Criado por LD",
-    "timestamp": datetime.now().strftime("Atualizado %H:%M"),
+    "timestamp": f"Atualizado {now_br.strftime('%H:%M')}",
     "whatChanged": [
         {"indicator": "IPML", "previous": "82.0", "current": str(ipml_final), "trend": f"▲ {ipml_final - 82:+.1f}"},
         {"indicator": "Spot SP", "previous": "R$ 3,05/L", "current": f"R$ {spot_sp:.2f}/L".replace(".", ","), "trend": "▲ Ao Vivo"},
@@ -253,8 +269,8 @@ template_data = {
     "climateRadar": {
         "summary15Days": "A seca persistente em Goiás e Minas Gerais restringe pastagens.",
         "nationalRegions": [
-            {"region": "Goiás (GO)", "condition": "Seca Severa / Estiagem", "weatherType": "drought", "impactDirection": "alta", "impactLabel": "Altista", "source": "INMET", "updatedAt": "12/08 15:00", "details": "Prejuízo aos pastos."},
-            {"region": "Minas Gerais (MG)", "condition": "Estiagem Triângulo & Norte", "weatherType": "drought", "impactDirection": "alta", "impactLabel": "Altista", "source": "INMET", "updatedAt": "12/08 15:00", "details": "Pressão sobre a captação."}
+            {"region": "Goiás (GO)", "condition": "Seca Severa / Estiagem", "weatherType": "drought", "impactDirection": "alta", "impactLabel": "Altista", "source": "INMET", "updatedAt": f"{now_br.strftime('%d/%m')} 15:00", "details": "Prejuízo aos pastos."},
+            {"region": "Minas Gerais (MG)", "condition": "Estiagem Triângulo & Norte", "weatherType": "drought", "impactDirection": "alta", "impactLabel": "Altista", "source": "INMET", "updatedAt": f"{now_br.strftime('%d/%m')} 15:00", "details": "Pressão sobre a captação."}
         ],
         "globalRegions": [
             {"region": "Nova Zelândia", "condition": "Sol / Início de Primavera", "weatherType": "sun", "impactDirection": "neutro", "impactLabel": "Neutro", "source": "Fonterra / GDT", "updatedAt": "04/08", "details": "Fluxos estáveis."}
