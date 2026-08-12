@@ -1,13 +1,13 @@
 {
   "ipml": {
-    "score": 84,
-    "statusLabel": "PRESSÃO ALTISTA EXTREMA (84/100)",
+    "score": 85,
+    "statusLabel": "PRESSÃO ALTISTA EXTREMA (85/100)",
     "factors": [
       {
         "label": "Leite Spot em Alta",
-        "score": 92,
+        "score": 93,
         "weight": "30%",
-        "points": "+27.6 pts",
+        "points": "+27.9 pts",
         "type": "positive",
         "explanation": "Forte pressão compradora no mercado spot."
       },
@@ -29,25 +29,25 @@
       },
       {
         "label": "Importações",
-        "score": 71,
+        "score": 72,
         "weight": "10%",
-        "points": "+7.1 pts",
+        "points": "+7.2 pts",
         "type": "positive",
         "explanation": "Comportamento das entradas de lácteos."
       },
       {
         "label": "Custos de Ração / B3",
-        "score": 83,
+        "score": 84,
         "weight": "10%",
-        "points": "+8.3 pts",
+        "points": "+8.4 pts",
         "type": "positive",
         "explanation": "Pressão dos custos de produção."
       },
       {
         "label": "Clima nas Bacias",
-        "score": 80,
+        "score": 77,
         "weight": "5%",
-        "points": "+4.0 pts",
+        "points": "+3.9 pts",
         "type": "positive",
         "explanation": "Impacto climático sobre a oferta."
       },
@@ -74,8 +74,8 @@
     {
       "indicator": "IPML",
       "previous": "82.0",
-      "current": "84",
-      "trend": "▲ +2.0"
+      "current": "85",
+      "trend": "▲ +3.0"
     },
     {
       "indicator": "Leite Spot",
@@ -208,7 +208,7 @@
     {
       "day": "Sex",
       "dateStr": "Hoje",
-      "eventTitle": "IPML Consolidado 84/100 - Viés Altista",
+      "eventTitle": "IPML Consolidado 85/100 - Viés Altista",
       "direction": "alta",
       "impactTag": "IPML",
       "isToday": true,
@@ -237,9 +237,9 @@
       }
     ]
   },
-  "todayDateFormatted": "Tuesday, 11 de august de 2026",
+  "todayDateFormatted": "Wednesday, 12 de august de 2026",
   "createdBy": "Criado por LD",
-  "timestamp": "Atualizado 08:11",
+  "timestamp": "Atualizado 08:20",
   "compass": {
     "marketDirection": "comprador",
     "directionBadge": "COMPRADOR (ALTA DOS PREÇOS)",
