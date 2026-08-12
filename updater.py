@@ -18,7 +18,6 @@ def get_brasilia_time():
 # ============================================================================
 
 OUTPUT_PATH = os.path.join("public", "data", "liveData.json")
-MODEL_NAME = "gemini-3.5-flash"
 
 SUPABASE_URL = os.environ.get("SUPABASE_URL")
 SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
@@ -73,7 +72,7 @@ def fetch_live_dollar():
     """Busca a cotação oficial do Dólar via API pública."""
     try:
         url = "https://economia.awesomeapi.com.br/json/last/USD-BRL"
-        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'})
         with urllib.request.urlopen(req, timeout=5) as response:
             data = json.loads(response.read().decode())
             bid = float(data["USDBRL"]["bid"])
@@ -170,18 +169,19 @@ for key, label, explanation in factor_definitions:
         "explanation": explanation
     })
 
-# Formatador com fuso horário de Brasília (GMT-3)
+# Formatador estrito com fuso horário de Brasília (GMT-3)
 dias_semana = ["Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado", "Domingo"]
 meses = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"]
 
 dia_str = dias_semana[now_br.weekday()]
 mes_str = meses[now_br.month - 1]
 data_formatada_br = f"{dia_str}, {now_br.day:02d} de {mes_str} de {now_br.year}"
+hora_formatada_br = now_br.strftime("%H:%M")
 
 template_data = {
     "todayDateFormatted": data_formatada_br,
     "createdBy": "Criado por LD",
-    "timestamp": f"Atualizado {now_br.strftime('%H:%M')}",
+    "timestamp": f"Atualizado {hora_formatada_br}",
     "whatChanged": [
         {"indicator": "IPML", "previous": "82.0", "current": str(ipml_final), "trend": f"▲ {ipml_final - 82:+.1f}"},
         {"indicator": "Spot SP", "previous": "R$ 3,05/L", "current": f"R$ {spot_sp:.2f}/L".replace(".", ","), "trend": "▲ Ao Vivo"},
@@ -285,11 +285,11 @@ template_data = {
 }
 
 # ============================================================================
-# SALVAR JSON
+# SALVAR JSON DIRETO (SEM INTERFERÊNCIA DE IA NO TEMPO/FUSO)
 # ============================================================================
 
 os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
 with open(OUTPUT_PATH, "w", encoding="utf-8") as file:
     json.dump(template_data, file, ensure_ascii=False, indent=2)
 
-print(f"Sucesso! Dados processados e salvos em {OUTPUT_PATH}")
+print(f"Sucesso! Dados processados e salvos com fuso de Brasília: {hora_formatada_br}")
