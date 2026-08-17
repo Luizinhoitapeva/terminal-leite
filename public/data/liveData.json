@@ -1,7 +1,7 @@
 {
-  "todayDateFormatted": "Domingo, 16 de agosto de 2026",
+  "todayDateFormatted": "Segunda-feira, 17 de agosto de 2026",
   "createdBy": "Criado por LD",
-  "timestamp": "Atualizado 04:33",
+  "timestamp": "Atualizado 04:54",
   "whatChanged": [
     {
       "indicator": "IPML",
@@ -12,7 +12,7 @@
     {
       "indicator": "Spot SP",
       "previous": "R$ 3,05/L",
-      "current": "R$ 3,09/L",
+      "current": "R$ 3,08/L",
       "trend": "▲ Ao Vivo"
     },
     {
@@ -30,7 +30,7 @@
     {
       "indicator": "Milho B3",
       "previous": "R$ 67,20",
-      "current": "R$ 68,52",
+      "current": "R$ 68,87",
       "trend": "▲ Alta"
     }
   ],
@@ -60,33 +60,33 @@
       },
       {
         "label": "Recuo na Captação Regional",
-        "score": 87,
+        "score": 88,
         "weight": "25%",
-        "points": "+21.8 pts",
+        "points": "+22.0 pts",
         "type": "positive",
         "explanation": "Redução da oferta de leite cru."
       },
       {
         "label": "Repasse no Atacado",
-        "score": 80,
+        "score": 79,
         "weight": "15%",
-        "points": "+12.0 pts",
+        "points": "+11.9 pts",
         "type": "positive",
         "explanation": "Movimento de preços em UHT e derivados."
       },
       {
         "label": "Importações",
-        "score": 74,
+        "score": 73,
         "weight": "10%",
-        "points": "+7.4 pts",
+        "points": "+7.3 pts",
         "type": "positive",
         "explanation": "Comportamento das entradas de lácteos."
       },
       {
         "label": "Custos de Ração / B3",
-        "score": 83,
+        "score": 86,
         "weight": "10%",
-        "points": "+8.3 pts",
+        "points": "+8.6 pts",
         "type": "positive",
         "explanation": "Pressão dos custos de produção."
       },
@@ -141,7 +141,7 @@
   "drivers": [
     {
       "id": "drv-1",
-      "text": "Leite Spot SP cotado a R$ 3,09/L com ágio firme no mercado regional,",
+      "text": "Leite Spot SP cotado a R$ 3,08/L com ágio firme no mercado regional,",
       "direction": "up",
       "impactTag": "Spot Regional"
     },
@@ -208,7 +208,7 @@
         "impactDirection": "alta",
         "impactLabel": "Altista",
         "source": "INMET",
-        "updatedAt": "16/08 15:00",
+        "updatedAt": "17/08 15:00",
         "details": "Prejuízo aos pastos."
       },
       {
@@ -218,7 +218,7 @@
         "impactDirection": "alta",
         "impactLabel": "Altista",
         "source": "INMET",
-        "updatedAt": "16/08 15:00",
+        "updatedAt": "17/08 15:00",
         "details": "Pressão sobre a captação."
       }
     ],
@@ -238,7 +238,7 @@
   "tickers": [
     {
       "label": "SPOT SP",
-      "value": "R$ 3,09 / L",
+      "value": "R$ 3,08 / L",
       "change": "+2,6%",
       "status": "up"
     },
@@ -250,7 +250,7 @@
     },
     {
       "label": "MILHO B3",
-      "value": "R$ 68,52 / Saca",
+      "value": "R$ 68,87 / Saca",
       "change": "+1,4%",
       "status": "up"
     },
