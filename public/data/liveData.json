@@ -1,7 +1,7 @@
 {
-  "todayDateFormatted": "Sexta-feira, 21 de agosto de 2026",
+  "todayDateFormatted": "Sábado, 22 de agosto de 2026",
   "createdBy": "Criado por LD",
-  "timestamp": "Atualizado 04:45",
+  "timestamp": "Atualizado 04:34",
   "whatChanged": [
     {
       "indicator": "IPML",
@@ -12,13 +12,13 @@
     {
       "indicator": "Spot SP",
       "previous": "R$ 3,05/L",
-      "current": "R$ 3,10/L",
+      "current": "R$ 3,07/L",
       "trend": "▲ Ao Vivo"
     },
     {
       "indicator": "Spot MG",
       "previous": "R$ 3,02/L",
-      "current": "R$ 3,06/L",
+      "current": "R$ 3,03/L",
       "trend": "▲ Regional"
     },
     {
@@ -30,7 +30,7 @@
     {
       "indicator": "Milho B3",
       "previous": "R$ 67,20",
-      "current": "R$ 68,19",
+      "current": "R$ 68,50",
       "trend": "▲ Alta"
     }
   ],
@@ -52,17 +52,17 @@
     "factors": [
       {
         "label": "Leite Spot em Alta",
-        "score": 93,
+        "score": 91,
         "weight": "30%",
-        "points": "+27.9 pts",
+        "points": "+27.3 pts",
         "type": "positive",
         "explanation": "Forte pressão compradora no mercado spot."
       },
       {
         "label": "Recuo na Captação Regional",
-        "score": 86,
+        "score": 89,
         "weight": "25%",
-        "points": "+21.5 pts",
+        "points": "+22.2 pts",
         "type": "positive",
         "explanation": "Redução da oferta de leite cru."
       },
@@ -84,15 +84,15 @@
       },
       {
         "label": "Custos de Ração / B3",
-        "score": 82,
+        "score": 84,
         "weight": "10%",
-        "points": "+8.2 pts",
+        "points": "+8.4 pts",
         "type": "positive",
         "explanation": "Pressão dos custos de produção."
       },
       {
         "label": "Clima nas Bacias",
-        "score": 79,
+        "score": 80,
         "weight": "5%",
         "points": "+4.0 pts",
         "type": "positive",
@@ -141,7 +141,7 @@
   "drivers": [
     {
       "id": "drv-1",
-      "text": "Leite Spot SP cotado a R$ 3,10/L com ágio firme no mercado regional,",
+      "text": "Leite Spot SP cotado a R$ 3,07/L com ágio firme no mercado regional,",
       "direction": "up",
       "impactTag": "Spot Regional"
     },
@@ -208,7 +208,7 @@
         "impactDirection": "alta",
         "impactLabel": "Altista",
         "source": "INMET",
-        "updatedAt": "21/08 15:00",
+        "updatedAt": "22/08 15:00",
         "details": "Prejuízo aos pastos."
       },
       {
@@ -218,7 +218,7 @@
         "impactDirection": "alta",
         "impactLabel": "Altista",
         "source": "INMET",
-        "updatedAt": "21/08 15:00",
+        "updatedAt": "22/08 15:00",
         "details": "Pressão sobre a captação."
       }
     ],
@@ -238,19 +238,19 @@
   "tickers": [
     {
       "label": "SPOT SP",
-      "value": "R$ 3,10 / L",
+      "value": "R$ 3,07 / L",
       "change": "+2,6%",
       "status": "up"
     },
     {
       "label": "SPOT MG",
-      "value": "R$ 3,06 / L",
+      "value": "R$ 3,03 / L",
       "change": "+1,8%",
       "status": "up"
     },
     {
       "label": "MILHO B3",
-      "value": "R$ 68,19 / Saca",
+      "value": "R$ 68,50 / Saca",
       "change": "+1,4%",
       "status": "up"
     },
