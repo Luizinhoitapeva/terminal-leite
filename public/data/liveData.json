@@ -1,7 +1,7 @@
 {
-  "todayDateFormatted": "Quinta-feira, 17 de setembro de 2026",
+  "todayDateFormatted": "Sexta-feira, 18 de setembro de 2026",
   "createdBy": "Criado por LD",
-  "timestamp": "Atualizado 09:28",
+  "timestamp": "Atualizado 09:07",
   "whatChanged": [
     {
       "indicator": "IPML",
@@ -30,7 +30,7 @@
     {
       "indicator": "Milho B3",
       "previous": "R$ 67,20",
-      "current": "R$ 68,41",
+      "current": "R$ 69,12",
       "trend": "▲ Alta"
     }
   ],
@@ -52,41 +52,41 @@
     "factors": [
       {
         "label": "Leite Spot em Alta",
-        "score": 92,
+        "score": 90,
         "weight": "30%",
-        "points": "+27.6 pts",
+        "points": "+27.0 pts",
         "type": "positive",
         "explanation": "Forte pressão compradora no mercado spot."
       },
       {
         "label": "Recuo na Captação Regional",
-        "score": 86,
+        "score": 89,
         "weight": "25%",
-        "points": "+21.5 pts",
+        "points": "+22.2 pts",
         "type": "positive",
         "explanation": "Redução da oferta de leite cru."
       },
       {
         "label": "Repasse no Atacado",
-        "score": 78,
+        "score": 79,
         "weight": "15%",
-        "points": "+11.7 pts",
+        "points": "+11.9 pts",
         "type": "positive",
         "explanation": "Movimento de preços em UHT e derivados."
       },
       {
         "label": "Importações",
-        "score": 74,
+        "score": 72,
         "weight": "10%",
-        "points": "+7.4 pts",
+        "points": "+7.2 pts",
         "type": "positive",
         "explanation": "Comportamento das entradas de lácteos."
       },
       {
         "label": "Custos de Ração / B3",
-        "score": 86,
+        "score": 83,
         "weight": "10%",
-        "points": "+8.6 pts",
+        "points": "+8.3 pts",
         "type": "positive",
         "explanation": "Pressão dos custos de produção."
       },
@@ -208,7 +208,7 @@
         "impactDirection": "alta",
         "impactLabel": "Altista",
         "source": "INMET",
-        "updatedAt": "17/09 15:00",
+        "updatedAt": "18/09 15:00",
         "details": "Prejuízo aos pastos."
       },
       {
@@ -218,7 +218,7 @@
         "impactDirection": "alta",
         "impactLabel": "Altista",
         "source": "INMET",
-        "updatedAt": "17/09 15:00",
+        "updatedAt": "18/09 15:00",
         "details": "Pressão sobre a captação."
       }
     ],
@@ -250,7 +250,7 @@
     },
     {
       "label": "MILHO B3",
-      "value": "R$ 68,41 / Saca",
+      "value": "R$ 69,12 / Saca",
       "change": "+1,4%",
       "status": "up"
     },
