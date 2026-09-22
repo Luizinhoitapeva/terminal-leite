@@ -1,7 +1,7 @@
 {
-  "todayDateFormatted": "Segunda-feira, 21 de setembro de 2026",
+  "todayDateFormatted": "Terça-feira, 22 de setembro de 2026",
   "createdBy": "Criado por LD",
-  "timestamp": "Atualizado 10:45",
+  "timestamp": "Atualizado 09:27",
   "whatChanged": [
     {
       "indicator": "IPML",
@@ -12,13 +12,13 @@
     {
       "indicator": "Spot SP",
       "previous": "R$ 3,05/L",
-      "current": "R$ 3,06/L",
+      "current": "R$ 3,07/L",
       "trend": "▲ Ao Vivo"
     },
     {
       "indicator": "Spot MG",
       "previous": "R$ 3,02/L",
-      "current": "R$ 3,06/L",
+      "current": "R$ 3,04/L",
       "trend": "▲ Regional"
     },
     {
@@ -30,7 +30,7 @@
     {
       "indicator": "Milho B3",
       "previous": "R$ 67,20",
-      "current": "R$ 68,63",
+      "current": "R$ 68,40",
       "trend": "▲ Alta"
     }
   ],
@@ -76,25 +76,25 @@
       },
       {
         "label": "Importações",
-        "score": 71,
+        "score": 72,
         "weight": "10%",
-        "points": "+7.1 pts",
+        "points": "+7.2 pts",
         "type": "positive",
         "explanation": "Comportamento das entradas de lácteos."
       },
       {
         "label": "Custos de Ração / B3",
-        "score": 83,
+        "score": 82,
         "weight": "10%",
-        "points": "+8.3 pts",
+        "points": "+8.2 pts",
         "type": "positive",
         "explanation": "Pressão dos custos de produção."
       },
       {
         "label": "Clima nas Bacias",
-        "score": 78,
+        "score": 80,
         "weight": "5%",
-        "points": "+3.9 pts",
+        "points": "+4.0 pts",
         "type": "positive",
         "explanation": "Impacto climático sobre a oferta."
       },
@@ -141,7 +141,7 @@
   "drivers": [
     {
       "id": "drv-1",
-      "text": "Leite Spot SP cotado a R$ 3,06/L com ágio firme no mercado regional,",
+      "text": "Leite Spot SP cotado a R$ 3,07/L com ágio firme no mercado regional,",
       "direction": "up",
       "impactTag": "Spot Regional"
     },
@@ -208,7 +208,7 @@
         "impactDirection": "alta",
         "impactLabel": "Altista",
         "source": "INMET",
-        "updatedAt": "21/09 15:00",
+        "updatedAt": "22/09 15:00",
         "details": "Prejuízo aos pastos."
       },
       {
@@ -218,7 +218,7 @@
         "impactDirection": "alta",
         "impactLabel": "Altista",
         "source": "INMET",
-        "updatedAt": "21/09 15:00",
+        "updatedAt": "22/09 15:00",
         "details": "Pressão sobre a captação."
       }
     ],
@@ -238,19 +238,19 @@
   "tickers": [
     {
       "label": "SPOT SP",
-      "value": "R$ 3,06 / L",
+      "value": "R$ 3,07 / L",
       "change": "+2,6%",
       "status": "up"
     },
     {
       "label": "SPOT MG",
-      "value": "R$ 3,06 / L",
+      "value": "R$ 3,04 / L",
       "change": "+1,8%",
       "status": "up"
     },
     {
       "label": "MILHO B3",
-      "value": "R$ 68,63 / Saca",
+      "value": "R$ 68,40 / Saca",
       "change": "+1,4%",
       "status": "up"
     },
